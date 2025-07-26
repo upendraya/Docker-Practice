@@ -8,3 +8,22 @@ The goal is to create automated tests for:
 - Authentication: Validate user login credentials.
 - Authorization: Verify access control for different API versions.
 - Content: Check correctness of sentiment analysis results.
+
+sentiment_api_test/
+├── auth_test/ # Authentication test scripts and Dockerfile
+│ ├── test.py
+│ ├── Dockerfile
+│ └── requirements.txt
+├── authz_test/ # Authorization test scripts and Dockerfile
+│ ├── test.py
+│ ├── Dockerfile
+│ └── requirements.txt
+├── content_test/ # Content test scripts and Dockerfile
+│ ├── test.py
+│ ├── Dockerfile
+│ └── requirements.txt
+├── api_test.log # Combined test results log file
+├── docker-compose.yml # Orchestrates the API and tests containers
+├── setup.sh # Build and run script for the project
+├── README.md # Project documentation
+└── (other supporting files)
