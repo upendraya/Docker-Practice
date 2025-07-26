@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  api:
+    image: datascientest/fastapi:1.0.0
+    container_name: sentiment_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api_test.log:/app/api_test.log
+    networks:
+      - test_net
+
+  auth_test:
+    build: ./auth_test
+    environment:
+      - LOG=1
+    volumes:
+      - ./api_test.log:/app/api_test.log
+    depends_on:
+      - api
+    networks:
+      - test_net
+
+  authz_test:
+    build: ./authz_test
+    environment:
+      - LOG=1
+    volumes:
+      - ./api_test.log:/app/api_test.log
+    depends_on:
+      - api
+    networks:
+      - test_net
+
+  content_test:
+    build: ./content_test
+    environment:
+      - LOG=1
+    volumes:
+      - ./api_test.log:/app/api_test.log
+    depends_on:
+      - api
+    networks:
+      - test_net
+
+networks:
+  test_net:
+

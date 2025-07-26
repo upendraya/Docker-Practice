@@ -1,0 +1,106 @@
+
+============================
+    Content Test
+============================
+request at /v1/sentiment
+| sentence="life is beautiful"
+expected sign = 1
+actual score = 0.5994
+==> SUCCESS
+
+============================
+    Content Test
+============================
+request at /v2/sentiment
+| sentence="life is beautiful"
+expected sign = 1
+actual score = 0.5994
+==> SUCCESS
+
+============================
+    Content Test
+============================
+request at /v1/sentiment
+| sentence="that sucks"
+expected sign = -1
+actual score = -0.3612
+==> SUCCESS
+
+============================
+    Content Test
+============================
+request at /v2/sentiment
+| sentence="that sucks"
+expected sign = -1
+actual score = -0.3612
+==> SUCCESS
+
+============================
+    Authorization test
+============================
+request at /v1/sentiment
+| username="alice"
+| password="wonderland"
+expected result = 200
+actual result = 200
+==> SUCCESS
+
+============================
+    Authorization test
+============================
+request at /v2/sentiment
+| username="alice"
+| password="wonderland"
+expected result = 200
+actual result = 200
+==> SUCCESS
+
+============================
+    Authorization test
+============================
+request at /v1/sentiment
+| username="bob"
+| password="builder"
+expected result = 200
+actual result = 200
+==> SUCCESS
+
+============================
+    Authorization test
+============================
+request at /v2/sentiment
+| username="bob"
+| password="builder"
+expected result = 403
+actual result = 403
+==> SUCCESS
+
+============================
+    Authentication test
+============================
+request at /permissions
+| username="alice"
+| password="wonderland"
+expected result = 200
+actual result = 200
+==> SUCCESS
+
+============================
+    Authentication test
+============================
+request at /permissions
+| username="bob"
+| password="builder"
+expected result = 200
+actual result = 200
+==> SUCCESS
+
+============================
+    Authentication test
+============================
+request at /permissions
+| username="clementine"
+| password="mandarine"
+expected result = 403
+actual result = 403
+==> SUCCESS
